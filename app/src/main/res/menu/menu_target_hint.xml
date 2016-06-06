@@ -11,14 +11,14 @@
         android:orderInCategory="200"
         android:title="Search"
         android:icon="@android:drawable/ic_menu_search"
-        app:showAsAction="ifRoom"
-        android:actionViewClass="android.widget.ImageButton" />
+        app:showAsAction="ifRoom" />
+        <!--android:actionViewClass="android.widget.ImageButton" />-->
     <item
         android:id="@+id/action_camera"
         android:orderInCategory="300"
         android:title="Camera"
         android:icon="@android:drawable/ic_menu_camera"
-        app:showAsAction="ifRoom"
-        android:actionViewClass="android.widget.ImageButton" />
+        app:showAsAction="ifRoom" />
+        <!--android:actionViewClass="android.widget.ImageButton" />-->
 
 </menu>

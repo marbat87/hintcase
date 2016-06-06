@@ -1,5 +1,9 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.github.dcendents.android-maven'
+
+group = 'com.joanfuentes.hintcaseassets' // Change this to match your package name
+version = '1.0.0' // Change this to match your version number
 
 def globalConfiguration = rootProject.extensions.getByName("ext")
 
@@ -8,7 +12,7 @@ android {
     buildToolsVersion globalConfiguration.getAt("androidBuildToolsVersion")
 
     defaultConfig {
-        minSdkVersion globalConfiguration.getAt("androidMinSdkVersion")
+        minSdkVersion 9
         targetSdkVersion globalConfiguration.getAt("androidTargetSdkVersion")
         versionCode globalConfiguration.getAt("androidVersionCodeAssetsLibrary")
         versionName globalConfiguration.getAt("androidVersionNameAssetsLibrary")
@@ -26,17 +30,46 @@ dependencies {
     compile libraryDependencies.AppCompat
 }
 
-publish {
-    Properties properties = new Properties()
-    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+task generateSourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier 'sources'
+}
 
-    userOrg = globalConfiguration.getAt("jcenterUserOrganization")
-    groupId = globalConfiguration.getAt("jcenterGroupId")
-    artifactId = globalConfiguration.getAt("jcenterArtifactIdAssetsLibrary")
-    publishVersion = globalConfiguration.getAt("androidVersionNameAssetsLibrary")
-    desc = globalConfiguration.getAt("jcenterDescriptionAssetsLibrary")
-    website = globalConfiguration.getAt("jcenterWebsite")
-    repository = globalConfiguration.getAt("jcenterRepository")
-    bintrayUser = properties.getProperty("bintrayUser")
-    bintrayKey = properties.getProperty("bintrayKey")
+task generateJavadocs(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath()
+            .join(File.pathSeparator))
+}
+
+task generateJavadocsJar(type: Jar) {
+    from generateJavadocs.destinationDir
+    classifier 'javadoc'
+}
+
+generateJavadocsJar.dependsOn generateJavadocs
+
+artifacts {
+    archives generateJavadocsJar
+    archives generateSourcesJar
+}
+
+bintray {
+    user = 'marbat87'
+    key = '151776ee00e86e62cda3351441ccac59e9c11243'
+    pkg {
+        repo = 'maven'
+        name = 'HintCaseAssets' // the name of the package in BinTray
+
+        version {
+            name = 'HintCaseAssets' // the name of your library project
+            desc = 'Initial Release'
+            released  = new Date()
+            vcsTag = '1.0.0' // the version
+        }
+
+        licenses = ['MIT']
+        vcsUrl = 'https://github.com/marbat87/hintcase.git' // your GitHub repo
+        websiteUrl = 'https://github.com/marbat87/hintcase.git' // your website or whatever has documentation
+    }
+    configurations = ['archives']
 }

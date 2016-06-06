@@ -37,12 +37,15 @@ public class DimenUtils {
     }
 
     public static Point getNavigationBarSizeIfExistAtTheBottom(Context context) {
-        Point appUsableSize = getAppUsableScreenSize(context);
+//        Point appUsableSize = getAppUsableScreenSize(context);
+        DisplayMetrics display = context.getResources().getDisplayMetrics();
         Point realScreenSize = getRealScreenSize(context);
         Point navigationPoint;
-        boolean navigationBarIsPresent = appUsableSize.y < realScreenSize.y;
+//        boolean navigationBarIsPresent = appUsableSize.y < realScreenSize.y;
+        boolean navigationBarIsPresent = display.heightPixels < realScreenSize.y;
         if (navigationBarIsPresent) {
-            navigationPoint = new Point(appUsableSize.x, realScreenSize.y - appUsableSize.y);
+//            navigationPoint = new Point(appUsableSize.x, realScreenSize.y - appUsableSize.y);
+            navigationPoint = new Point(display.widthPixels, realScreenSize.y - display.heightPixels);
         } else {
             navigationPoint = new Point();
         }
@@ -50,25 +53,28 @@ public class DimenUtils {
     }
 
     public static Point getNavigationBarSizeIfExistOnTheRight(Context context) {
-        Point appUsableSize = getAppUsableScreenSize(context);
+//        Point appUsableSize = getAppUsableScreenSize(context);
+        DisplayMetrics display = context.getResources().getDisplayMetrics();
         Point realScreenSize = getRealScreenSize(context);
         Point navigationPoint;
-        boolean navigationBarIsPresent = appUsableSize.x < realScreenSize.x;
+//        boolean navigationBarIsPresent = appUsableSize.x < realScreenSize.x;
+        boolean navigationBarIsPresent = display.widthPixels < realScreenSize.x;
         if (navigationBarIsPresent) {
-            navigationPoint =  new Point(realScreenSize.x - appUsableSize.x, appUsableSize.y);
+//            navigationPoint =  new Point(realScreenSize.x - appUsableSize.x, appUsableSize.y);
+            navigationPoint =  new Point(realScreenSize.x - display.widthPixels, display.heightPixels);
         } else {
             navigationPoint =  new Point();
         }
         return navigationPoint;
     }
 
-    public static Point getAppUsableScreenSize(Context context) {
-        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        Display display = windowManager.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        return size;
-    }
+//    public static Point getAppUsableScreenSize(Context context) {
+//        WindowManager windowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+//        Display display = windowManager.getDefaultDisplay();
+//        Point size = new Point();
+//        display.getSize(size);
+//        return size;
+//    }
 
     public static Point getRealScreenSize(Context context) {
         View decorView = ((Activity)context).getWindow().getDecorView();

@@ -3,6 +3,7 @@ package com.joanfuentes.hintcaseexample.customBlock;
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.style.TextAppearanceSpan;
 import android.view.Gravity;
@@ -18,6 +19,7 @@ import com.joanfuentes.hintcase.HintCase;
 import com.joanfuentes.hintcase.utils.DimenUtils;
 import com.joanfuentes.hintcaseassets.hintcontentholders.HintContentHolder;
 import com.joanfuentes.hintcaseexample.R;
+import com.nineoldandroids.view.ViewHelper;
 
 import java.util.ArrayList;
 
@@ -129,13 +131,17 @@ public class CustomHintContentHolder extends HintContentHolder {
     @Override
     public void onLayout() {
         calculateArrowTranslation();
-        arrow.setTranslationX(xTranslationImage);
-        arrow.setTranslationY(yTranslationImage);
+//        arrow.setTranslationX(xTranslationImage);
+        ViewHelper.setTranslationX(arrow, xTranslationImage);
+//        arrow.setTranslationY(yTranslationImage);
+        ViewHelper.setTranslationY(arrow, yTranslationImage);
         if (hintCase.getBlockInfoPosition() == HintCase.HINT_BLOCK_POSITION_RIGHT
                 || hintCase.getBlockInfoPosition() == HintCase.HINT_BLOCK_POSITION_LEFT) {
             if (arrow.getBottom() >= contentLinearLayout.getBottom()) {
-                float translationY = arrow.getY() + (arrow.getHeight()/2) - contentLinearLayout.getY() - (contentLinearLayout.getHeight()/2);
-                contentLinearLayout.setTranslationY(translationY);
+//                float translationY = arrow.getY() + (arrow.getHeight()/2) - contentLinearLayout.getY() - (contentLinearLayout.getHeight()/2);
+                float translationY = ViewHelper.getY(arrow) + (arrow.getHeight()/2) - ViewHelper.getY(contentLinearLayout) - (contentLinearLayout.getHeight()/2);
+//                contentLinearLayout.setTranslationY(translationY);
+                ViewHelper.setTranslationY(contentLinearLayout, translationY);
             }
         }
     }
@@ -321,12 +327,14 @@ public class CustomHintContentHolder extends HintContentHolder {
         public Builder setBorder(int resourceId, int resId) {
             blockInfo.useBorder = true;
             blockInfo.borderSize = context.getResources().getDimensionPixelSize(resourceId);
-            blockInfo.borderColor = context.getResources().getColor(resId);
+//            blockInfo.borderColor = context.getResources().getColor(resId);
+            blockInfo.borderColor = ContextCompat.getColor(context, resId);
             return this;
         }
 
         public Builder setBackgroundColorFromResource(int resId) {
-            blockInfo.backgroundColor = context.getResources().getColor(resId);
+//            blockInfo.backgroundColor = context.getResources().getColor(resId);
+            blockInfo.backgroundColor = ContextCompat.getColor(context, resId);
             return this;
         }
 

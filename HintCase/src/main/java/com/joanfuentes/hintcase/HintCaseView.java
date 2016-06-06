@@ -1,8 +1,5 @@
 package com.joanfuentes.hintcase;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -16,6 +13,10 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.joanfuentes.hintcase.utils.DimenUtils;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorSet;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.view.ViewHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,10 +126,12 @@ class HintCaseView extends RelativeLayout {
         AnimatorSet animatorSet = new AnimatorSet();
         if (animators.isEmpty()) {
             if (existHintBlock()) {
-                getHintBlockView().setAlpha(1);
+//                getHintBlockView().setAlpha(1);
+                ViewHelper.setAlpha(getHintBlockView(), 1);
             }
             for (View view: extraBlockViews) {
-                view.setAlpha(1);
+//                view.setAlpha(1);
+                ViewHelper.setAlpha(view, 1);
             }
         } else {
             animatorSet.playTogether(animators);
@@ -140,12 +143,14 @@ class HintCaseView extends RelativeLayout {
                 public void onAnimationEnd(Animator animation) {
                     if (existHintBlock()
                             && showContentHolderAnimator == ContentHolderAnimator.NO_ANIMATOR) {
-                        getHintBlockView().setAlpha(1);
+//                        getHintBlockView().setAlpha(1);
+                        ViewHelper.setAlpha(getHintBlockView(), 1);
                     }
                     for (int i = 0; i < showExtraContentHolderAnimators.size(); i++) {
                         ContentHolderAnimator animator = showExtraContentHolderAnimators.get(i);
                         if (animator == ContentHolderAnimator.NO_ANIMATOR) {
-                            extraBlockViews.get(i).setAlpha(1);
+//                            extraBlockViews.get(i).setAlpha(1);
+                            ViewHelper.setAlpha(extraBlockViews.get(i), 1);
                         }
                     }
                 }
@@ -166,7 +171,8 @@ class HintCaseView extends RelativeLayout {
             animators.add(hideContentHolderAnimator.getAnimator(hintBlockView));
         } else {
             if (existHintBlock()) {
-                getHintBlockView().setAlpha(0);
+//                getHintBlockView().setAlpha(0);
+                ViewHelper.setAlpha(getHintBlockView(), 0);
             }
         }
         if (!hideExtraContentHolderAnimators.isEmpty()) {
@@ -180,7 +186,8 @@ class HintCaseView extends RelativeLayout {
         AnimatorSet animatorSet = new AnimatorSet();
         if (animators.isEmpty()) {
             for (View view: extraBlockViews) {
-                view.setAlpha(0);
+//                view.setAlpha(0);
+                ViewHelper.setAlpha(view, 0);
             }
             performHideShape();
         } else {
@@ -261,7 +268,8 @@ class HintCaseView extends RelativeLayout {
             FrameLayout frameLayout = getHintBlockFrameLayout();
             if (hintBlockView == NO_BLOCK_INFO_VIEW) {
                 hintBlockView = hintBlock.getView(getContext(), hintCase, frameLayout);
-                hintBlockView.setAlpha(0);
+//                hintBlockView.setAlpha(0);
+                ViewHelper.setAlpha(hintBlockView, 0);
             }
             frameLayout.addView(hintBlockView);
             addView(frameLayout);
@@ -271,7 +279,8 @@ class HintCaseView extends RelativeLayout {
             for (int i = 0; i < extraBlocks.size(); i++) {
                 View view = extraBlocks.get(i).getView(getContext(), hintCase, this);
                 if (showExtraContentHolderAnimators.get(i) != ContentHolderAnimator.NO_ANIMATOR) {
-                    view.setAlpha(0);
+//                    view.setAlpha(0);
+                    ViewHelper.setAlpha(view, 0);
                 }
                 extraBlockViews.add(view);
                 relativeLayout.addView(view);

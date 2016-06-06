@@ -1,11 +1,9 @@
 package com.joanfuentes.hintcaseassets.contentholderanimators;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.view.View;
 
 import com.joanfuentes.hintcase.ContentHolderAnimator;
+import com.nineoldandroids.animation.Animator;
 
 public class FadeInContentHolderAnimator extends ContentHolderAnimator {
 
@@ -18,13 +16,31 @@ public class FadeInContentHolderAnimator extends ContentHolderAnimator {
     }
 
     @Override
-    public ValueAnimator getAnimator(View view, final OnFinishListener onFinishListener) {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, View.ALPHA, 0, 1);
+    public com.nineoldandroids.animation.ValueAnimator getAnimator(View view, final OnFinishListener onFinishListener) {
+//        ObjectAnimator animator = ObjectAnimator.ofFloat(view, View.ALPHA, 0, 1);
+        com.nineoldandroids.animation.ObjectAnimator animator = com.nineoldandroids.animation.ObjectAnimator.ofFloat(view, "alpha", 0, 1);
         animator.setDuration(durationInMilliseconds);
         if (onFinishListener != NO_CALLBACK) {
+//            animator.addListener(new Animator.AnimatorListener() {
+//                @Override
+//                public void onAnimationStart(Animator animation) { }
+//
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    onFinishListener.onFinish();
+//                }
+//
+//                @Override
+//                public void onAnimationCancel(Animator animation) { }
+//
+//                @Override
+//                public void onAnimationRepeat(Animator animation) { }
+//            });
             animator.addListener(new Animator.AnimatorListener() {
                 @Override
-                public void onAnimationStart(Animator animation) { }
+                public void onAnimationStart(Animator animation) {
+
+                }
 
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -32,10 +48,14 @@ public class FadeInContentHolderAnimator extends ContentHolderAnimator {
                 }
 
                 @Override
-                public void onAnimationCancel(Animator animation) { }
+                public void onAnimationCancel(Animator animation) {
+
+                }
 
                 @Override
-                public void onAnimationRepeat(Animator animation) { }
+                public void onAnimationRepeat(Animator animation) {
+
+                }
             });
         }
         return animator;

@@ -2,6 +2,7 @@ package com.joanfuentes.hintcase;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 
 import com.joanfuentes.hintcase.utils.DimenUtils;
@@ -68,7 +69,8 @@ public class HintCase {
     }
 
     public HintCase setBackgroundColorByResourceId(int resourceId) {
-        this.hintCaseView.setBackgroundColor(context.getResources().getColor(resourceId));
+//        this.hintCaseView.setBackgroundColor(context.getResources().getColor(resourceId));
+        this.hintCaseView.setBackgroundColor(ContextCompat.getColor(context, resourceId));
         return this;
     }
 

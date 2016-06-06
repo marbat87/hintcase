@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
@@ -12,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.Switch;
 
 import com.joanfuentes.hintcase.HintCase;
 import com.joanfuentes.hintcaseassets.contentholderanimators.FadeInContentHolderAnimator;
@@ -138,7 +138,7 @@ public class TargetHintActivity extends AppCompatActivity {
             });
         }
 
-        Switch switchButton = (Switch) findViewById(R.id.switch_button);
+        SwitchCompat switchButton = (SwitchCompat) findViewById(R.id.switch_button);
         if (switchButton != null) {
             switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
@@ -166,7 +166,9 @@ public class TargetHintActivity extends AppCompatActivity {
                             .build();
                     new HintCase(view.getRootView())
                             .setTarget(findViewById(R.id.switch_button), HintCase.TARGET_IS_CLICKABLE)
-                            .setBackgroundColorByResourceId(android.R.color.holo_blue_dark)
+                            //MARCELLO
+//                            .setBackgroundColorByResourceId(android.R.color.holo_blue_dark)
+                            .setBackgroundColorByResourceId(R.color.colorPrimary)
                             .setShapeAnimators(new RevealRectangularShapeAnimator(),
                                     new UnrevealRectangularShapeAnimator())
                             .setHintBlock(blockInfo, new FadeInContentHolderAnimator())

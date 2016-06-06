@@ -3,6 +3,7 @@ package com.joanfuentes.hintcaseexample;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -76,7 +77,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setShapeAnimators(new FadeInShapeAnimator(), new FadeOutShapeAnimator())
                             .setHintBlock(blockInfo)
                             .show();
@@ -93,7 +95,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setTarget(NO_VIEW_AS_TARGET, new CircularShape())
                             .setShapeAnimators(new RevealCircleShapeAnimator(),
                                     new UnrevealCircleShapeAnimator())
@@ -113,7 +116,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setTarget(NO_VIEW_AS_TARGET, new RectangularShape())
                             .setShapeAnimators(new RevealRectangularShapeAnimator(),
                                     new UnrevealRectangularShapeAnimator())
@@ -132,7 +136,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setShapeAnimators(new FadeInShapeAnimator(), new FadeOutShapeAnimator())
                             .setHintBlock(blockInfo, new FadeInContentHolderAnimator(),
                                     new FadeOutContentHolderAnimator())
@@ -150,7 +155,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setTarget(NO_VIEW_AS_TARGET, new CircularShape())
                             .setShapeAnimators(new RevealCircleShapeAnimator(),
                                     new UnrevealCircleShapeAnimator())
@@ -171,7 +177,8 @@ public class FullHintActivity extends AppCompatActivity {
                     SimpleHintContentHolder blockInfo =
                             getSimpleHintContentHolder(view, animatedImageView);
                     new HintCase(view.getRootView())
-                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                            .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                            .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                             .setTarget(NO_VIEW_AS_TARGET, new CircularShape())
                             .setShapeAnimators(new RevealCircleShapeAnimator(),
                                     new UnrevealCircleShapeAnimator())
@@ -203,7 +210,8 @@ public class FullHintActivity extends AppCompatActivity {
                 .build();
         new HintCase(view.getRootView())
                 .setTarget(findViewById(R.id.textView), new CircularShape(), HintCase.TARGET_IS_NOT_CLICKABLE)
-                .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                 .setShapeAnimators(new RevealCircleShapeAnimator(), ShapeAnimator.NO_ANIMATOR)
                 .setHintBlock(blockInfo, new FadeInContentHolderAnimator(), new SlideOutFromRightContentHolderAnimator())
                 .setOnClosedListener(new HintCase.OnClosedListener() {
@@ -224,7 +232,8 @@ public class FullHintActivity extends AppCompatActivity {
                 .build();
         new HintCase(view.getRootView())
                 .setTarget(findViewById(R.id.textView), new CircularShape())
-                .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+//                .setBackgroundColor(getResources().getColor(R.color.colorPrimary))
+                .setBackgroundColor(ContextCompat.getColor(FullHintActivity.this, R.color.colorPrimary))
                 .setShapeAnimators(ShapeAnimator.NO_ANIMATOR, new UnrevealCircleShapeAnimator())
                 .setHintBlock(blockInfo, new SlideInFromRightContentHolderAnimator())
                 .show();

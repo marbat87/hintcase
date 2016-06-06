@@ -1,11 +1,12 @@
 package com.joanfuentes.hintcaseassets.contentholderanimators;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.view.View;
 
 import com.joanfuentes.hintcase.ContentHolderAnimator;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.ObjectAnimator;
+import com.nineoldandroids.animation.ValueAnimator;
+import com.nineoldandroids.view.ViewHelper;
 
 public class SlideOutFromRightContentHolderAnimator extends ContentHolderAnimator {
 
@@ -19,9 +20,10 @@ public class SlideOutFromRightContentHolderAnimator extends ContentHolderAnimato
 
     @Override
     public ValueAnimator getAnimator(final View view, final OnFinishListener onFinishListener) {
-        view.setAlpha(1);
+//        view.setAlpha(1);
+        ViewHelper.setAlpha(view, 1);
         float spaceUntilRightSide = view.getRootView().getWidth() - view.getLeft();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, View.TRANSLATION_X, 0,
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationX", 0,
                 spaceUntilRightSide);
         animator.setDuration(durationInMilliseconds);
         if (onFinishListener != NO_CALLBACK) {

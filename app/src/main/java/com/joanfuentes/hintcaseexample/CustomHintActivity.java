@@ -107,7 +107,9 @@ public class CustomHintActivity extends AppCompatActivity {
         CustomHintContentHolder blockInfo = new CustomHintContentHolder.Builder(view.getContext())
                 .setContentTitle("Custom Hint Content Holder!")
                 .setContentText("This hint was done with a custom hint content holder and it only can be closed clicking over the blue OK button")
-                .setBorder(R.dimen.bubble_border, android.R.color.holo_blue_dark)
+                //MARCELLO
+//                .setBorder(R.dimen.bubble_border, android.R.color.holo_blue_dark)
+                .setBorder(R.dimen.bubble_border, R.color.colorAccent)
                 .setArrowSize(R.dimen.arrow_width, R.dimen.arrow_height)
                 .setBackgroundColor(Color.WHITE)
                 .setTitleStyle(R.style.title)

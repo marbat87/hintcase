@@ -35,12 +35,12 @@
     </style>
 
     <style name="content_light" parent="Base.TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@android:color/holo_blue_light</item>
+        <item name="android:textColor">@android:color/primary_text_light</item>
     </style>
 
     <style name="buttonNice" parent="Base.Widget.AppCompat.Button.Colored">
         <item name="android:textSize">24sp</item>
-        <item name="colorButtonNormal">@android:color/holo_blue_dark</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
         <item name="android:textColor">@android:color/white</item>
     </style>
 

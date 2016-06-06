@@ -5,8 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.nineoldandroids.view.ViewHelper;
 
 public class TriangleShapeView extends View {
     private static Direction DEFAULT_TRIANGLE_DIRECTION = Direction.UP;
@@ -83,20 +86,25 @@ public class TriangleShapeView extends View {
         pathBackground.lineTo(width, height);
         pathBackground.close();
         paintBackground.setShadowLayer(shadowSize, 1, 1, Color.BLACK);
-        setLayerType(LAYER_TYPE_SOFTWARE, null);
+        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.HONEYCOMB) {
+            setLayerType(LAYER_TYPE_SOFTWARE, null);
+        }
         canvas.drawPath(pathBackground, paintBackground);
     }
 
     private void rotateView(Direction direction) {
         switch (direction) {
             case RIGHT:
-                this.setRotation(90);
+//                this.setRotation(90);
+                ViewHelper.setRotation(this, 90);
                 break;
             case DOWN:
-                this.setRotation(180);
+//                this.setRotation(180);
+                ViewHelper.setRotation(this, 180);
                 break;
             case LEFT:
-                this.setRotation(270);
+//                this.setRotation(270);
+                ViewHelper.setRotation(this, 270);
         }
     }
 

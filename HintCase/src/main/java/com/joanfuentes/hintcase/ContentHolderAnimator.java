@@ -1,7 +1,8 @@
 package com.joanfuentes.hintcase;
 
-import android.animation.ValueAnimator;
 import android.view.View;
+
+import com.nineoldandroids.animation.ValueAnimator;
 
 public abstract class ContentHolderAnimator {
     public static final int DEFAULT_ANIMATION_DURATION_IN_MILLISECONDS = 300;

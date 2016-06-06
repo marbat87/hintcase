@@ -1,12 +1,12 @@
 package com.joanfuentes.hintcaseassets.shapeanimators;
 
-import android.animation.FloatEvaluator;
-import android.animation.ValueAnimator;
 import android.view.View;
 
-import com.joanfuentes.hintcase.ShapeAnimator;
 import com.joanfuentes.hintcase.RectangularShape;
 import com.joanfuentes.hintcase.Shape;
+import com.joanfuentes.hintcase.ShapeAnimator;
+import com.nineoldandroids.animation.FloatEvaluator;
+import com.nineoldandroids.animation.ValueAnimator;
 
 public class UnrevealRectangularShapeAnimator extends ShapeAnimator {
     private FloatEvaluator floatEvaluator;
